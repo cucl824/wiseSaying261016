@@ -8,6 +8,11 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
+        int lastId = 0;
+
+        WiseSaying[] wiseSayings = new WiseSaying[100];
+        int wiseSayingsLastIndex = -1;
+
         while(true){
             System.out.print("명령) ");
             String cmd = sc.nextLine().trim();
@@ -19,7 +24,30 @@ public class Main {
 
                 System.out.print("작가: ");
                 String author = sc.nextLine().trim();
+
+                int id = ++lastId;
+
+                WiseSaying wiseSaying = new WiseSaying();
+
+                wiseSaying.id = id;
+                wiseSaying.content = content;
+                wiseSaying.author = author;
+
+                wiseSayings[++wiseSayingsLastIndex] = wiseSaying;
+
+                System.out.printf("%d번 명언이 등록되었습니다.\n", id);
+            }else if(cmd.equals("목록")){
+                System.out.println("번호 / 명언 / 작가");
+                System.out.println("-------------------");
+
+                for(int i = 0; i <= wiseSayingsLastIndex; i++){
+                    WiseSaying wiseSaying = wiseSayings[i];
+
+                    System.out.printf("%d / %s / %s\n",wiseSaying.id,wiseSaying.content,wiseSaying.author);
+                }
+
             }
         }
+        sc.close();
     }
 }
