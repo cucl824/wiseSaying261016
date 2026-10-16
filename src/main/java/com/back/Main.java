@@ -40,7 +40,7 @@ public class Main {
                 System.out.println("번호 / 명언 / 작가");
                 System.out.println("-------------------");
 
-                for(int i = 0; i <= wiseSayingsLastIndex; i++){
+                for(int i = wiseSayingsLastIndex; i >= 0; i--){
                     WiseSaying wiseSaying = wiseSayings[i];
 
                     System.out.printf("%d / %s / %s\n",wiseSaying.id,wiseSaying.content,wiseSaying.author);
